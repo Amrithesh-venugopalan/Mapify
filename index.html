@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapify | Fueling Your Fitness.</title>
+    <link rel="icon" href="mapify-favicon-white.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ephesis&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="queries.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="nav-container">
+        <img
+          class="logo-primary"
+          src="mapify-logo-white-transparent.png"
+          alt="logo"
+        />
+        <div class="nav-bar-container">
+          <ul class="nav-bar">
+            <li class="nav-item nav-sort">
+              <ion-icon name="funnel" class="nav-sort-btn"></ion-icon>
+              <span class="nav-name">Sort</span>
+            </li>
+            <li class="nav-item nav-marked">
+              <ion-icon name="bookmarks" class="nav-marked-btn"></ion-icon>
+              <span class="nav-name">Show marked</span>
+            </li>
+            <li class="nav-item nav-allworkout">
+              <ion-icon name="earth" class="nav-allworkout-btn"></ion-icon>
+              <span class="nav-name">Show all</span>
+            </li>
+            <li class="nav-item nav-graph">
+              <ion-icon name="stats-chart" class="nav-graph-btn"></ion-icon>
+              <span class="nav-name">Calorie graph</span>
+            </li>
+            <li class="nav-item nav-deleteall">
+              <ion-icon name="trash" class="nav-deleteall-btn"></ion-icon>
+              <span class="nav-name">Delete all</span>
+            </li>
+            <li class="nav-item nav-person">
+              <ion-icon name="person" class="nav-person-btn"></ion-icon>
+              <span class="nav-name">Profile</span>
+            </li>
+          </ul>
+        </div>
+        <button class="mobile-navigation">
+          <ion-icon name="menu" class="mob-nav-item nav-list"></ion-icon>
+
+          <ion-icon name="close" class="mob-nav-item nav-close"></ion-icon>
+        </button>
+      </div>
+      <div class="sidebar">
+        <div class="message-box hide">
+          <div class="message parent hide" data-active="false">
+            <ion-icon name="close" class="message-close"></ion-icon>
+            <p class="message-content"></p>
+          </div>
+          <div class="personal-info parent hide" data-active="false">
+            <ion-icon name="close" class="message-close"></ion-icon>
+            <form class="personal-info-form">
+              <div class="personal-row">
+                <label for="gender" class="personal-label">Gender</label>
+                <select
+                  name="gender"
+                  id="gender"
+                  class="personal-input personal-input-gender"
+                >
+                  <option value="male" class="gender-option">Male</option>
+                  <option value="female" class="gender-option">female</option>
+                </select>
+              </div>
+              <div class="personal-row">
+                <label for="age" class="personal-label">Age</label>
+                <input
+                  type="text"
+                  id="age"
+                  class="personal-input personal-input-age"
+                  placeholder="years"
+                />
+              </div>
+
+              <div class="personal-row">
+                <label for="weight" class="personal-label">Weight</label>
+                <input
+                  type="text"
+                  id="weight"
+                  class="personal-input personal-input-weight"
+                  placeholder="kg"
+                />
+              </div>
+              <button class="personalinfo-submit-btn" type="submit">
+                Save
+              </button>
+            </form>
+          </div>
+          <div class="sort-info parent hide" data-active="false">
+            <ion-icon name="close" class="message-close"></ion-icon>
+            <form class="sort-form">
+              <div class="sort-info-row">
+                <label for="type" class="sort-label">Sort by</label>
+                <select
+                  name="type"
+                  id="type"
+                  class="sort-type-input sort-input"
+                >
+                  <option value="calBurnt" class="sort-type-option">
+                    Calories Burnt
+                  </option>
+                  <option value="distance" class="sort-type-option">
+                    Distance
+                  </option>
+                  <option value="duration" class="sort-type-option">
+                    Duration
+                  </option>
+                  <option value="swimmingSpeed" class="sort-type-option">
+                    Swimming Speed
+                  </option>
+                  <option value="cyclingSpeed" class="sort-type-option">
+                    Cycling Speed
+                  </option>
+                  <option value="pace" class="sort-type-option">Pace</option>
+                </select>
+              </div>
+              <div class="sort-info-row">
+                <label for="order" class="sort-label">Order</label>
+                <select
+                  name="order"
+                  id="order"
+                  class="sort-order-input sort-input"
+                >
+                  <option value="lowtohigh" class="sort-order-option">
+                    High to Low
+                  </option>
+                  <option value="hightolow" class="sort-order-option">
+                    Low to High
+                  </option>
+                </select>
+              </div>
+              <button class="sort-submit-btn" type="submit">Ok</button>
+            </form>
+          </div>
+          <div class="graph-chart parent hide" data-active="false">
+            <ion-icon name="close" class="message-close"></ion-icon>
+            <canvas id="myChart" class="calorie-graph"></canvas>
+          </div>
+        </div>
+        <div class="bike-container">
+          <img src="bikegif.gif" class="bike-gif hide" alt="bike" />
+        </div>
+        <div class="sidebar-main-container">
+          <form class="form hidden">
+            <div class="form-field">
+              <label for="activity" class="form-label">Activity</label>
+              <select
+                name="activity"
+                id="activity"
+                class="form-input form-input--activity"
+              >
+                <option value="running" class="activity-option">Running</option>
+                <option value="cycling" class="activity-option">Cycling</option>
+                <option value="swimming" class="activity-option">
+                  Swimming
+                </option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="distance" class="form-label">Distance</label>
+              <input
+                type="number"
+                id="distance"
+                class="form-input form-input--distance"
+                placeholder="Km"
+              />
+            </div>
+            <div class="form-field">
+              <label for="date" class="form-label">Date</label>
+              <input
+                type="date"
+                id="date"
+                class="form-input form-input--date"
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="duration" class="form-label">Duration</label>
+              <input
+                type="number"
+                id="duration"
+                class="form-input form-input--duration"
+                placeholder="Min"
+              />
+            </div>
+            <div class="form-note">
+              <input
+                type="text"
+                class="form-input--note"
+                placeholder="Add notes here"
+              />
+            </div>
+            <button type="submit" class="form-btn">OK</button>
+          </form>
+          <!-- <ul class="workout-container"> -->
+        </div>
+
+        <footer class="footer-container">
+          <!-- can add a logo here -->
+          <p class="copyright">
+            &copy; Copyright by
+            <a
+              class="linkedin-link"
+              target="_blank"
+              href="https://www.linkedin.com/in/amrithesh-venugopalan-507786264/"
+              >Amrithesh Venugopalan</a
+            >.
+          </p>
+        </footer>
+      </div>
+      <div id="map">
+        <div class="hide-popup">
+          <ion-icon name="eye" class="eye eye-open"></ion-icon>
+          <ion-icon name="eye-off" class="eye eye-close hide"></ion-icon>
+        </div>
+      </div>
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

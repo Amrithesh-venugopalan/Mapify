@@ -1,0 +1,158 @@
+/* Below 1200px */
+
+@media (max-width: 50em) {
+  .main-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 16rem auto;
+    height: auto;
+  }
+  .nav-container {
+    margin-bottom: 0;
+    padding: 2rem 4rem;
+  }
+  #map {
+    margin: 0 4rem 4rem 4rem;
+    height: 50vh;
+    object-fit: contain;
+    grid-column: 1;
+    grid-row: 2;
+    border-radius: 0.4rem;
+  }
+  .sidebar {
+    grid-row: 3;
+    height: 80vh;
+  }
+  .form,
+  .workout {
+    max-width: none;
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+}
+
+/* Below 672px */
+
+@media (max-width: 28em) {
+  html {
+    font-size: 37.5%;
+  }
+  #map {
+    height: 45rem;
+  }
+  .mobile-navigation {
+    display: block;
+    z-index: 9999;
+  }
+  .nav-list {
+    display: block;
+  }
+  .nav-container {
+    position: relative;
+  }
+  .nav-bar-container {
+    background-color: hsl(205, 12%, 20%, 0.97);
+    transform: translateX(100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-out;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+  .nav-open .nav-bar-container {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+  }
+  .nav-open .nav-close {
+    display: block;
+    z-index: 9999999;
+  }
+  .nav-open .nav-list {
+    display: none;
+  }
+  .nav-bar {
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+  .nav-name {
+    display: block;
+  }
+  .nav-item {
+    display: flex;
+    gap: 1rem;
+  }
+  .graph-chart {
+    height: 35rem;
+    width: 50rem;
+  }
+}
+
+/* Below 504px */
+
+@media (max-width: 21em) {
+  .workout-type,
+  .workout-duration,
+  .workout-speed,
+  .workout-calories {
+    grid-column: span 2;
+  }
+  .nav-container {
+    height: 12rem;
+  }
+  .main-container {
+    grid-template-rows: 12rem auto;
+  }
+  #map {
+    margin: 0 3rem 4rem 3rem;
+    height: 40vh;
+  }
+  .form,
+  .workout {
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+  .workout-title {
+    font-size: 2.4rem;
+    padding-bottom: 1.8rem;
+  }
+  .workout-note {
+    margin-top: 1rem;
+  }
+  .bike-gif {
+    height: 30rem;
+  }
+}
+
+/* Below 408px */
+
+@media (max-width: 17rem) {
+  html {
+    font-size: 33.33%;
+  }
+}
+
+/* Below 360px */
+
+@media (max-width: 15rem) {
+  html {
+    font-size: 29.16%;
+  }
+  #map {
+    height: 45vh;
+  }
+}
+@media (max-width: 12.5rem) {
+  .graph-chart {
+    height: 25rem;
+    width: 35rem;
+  }
+}
